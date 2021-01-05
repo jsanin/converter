@@ -124,7 +124,7 @@ public class NumberConversionServiceImpl implements NumberConversionService {
     }
 
     @Override
-    public String convertNumberToWords(String strNumber) {
+    public String convertIntegerToWords(String strNumber) {
         try {
             return convertNumberToWords(Integer.valueOf(strNumber));
         } catch(RuntimeException e) {

@@ -28,7 +28,7 @@ public class NumberConverterApiImpl implements NumberConverterApi {
         ResponseEntity<NumberToWordsResponse> toReturn = null;
         try {
             toReturn = ResponseEntity.ok(
-                    new NumberToWordsResponse(convertNumbersService.convertNumberToWords(strNumber), null, null));
+                    new NumberToWordsResponse(convertNumbersService.convertIntegerToWords(strNumber), null, null));
 
         } catch(NumberFormatException e) {
             toReturn = ResponseEntity.badRequest().

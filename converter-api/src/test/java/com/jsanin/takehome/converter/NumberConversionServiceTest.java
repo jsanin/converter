@@ -50,7 +50,7 @@ public class NumberConversionServiceTest {
         assertThrows(NumberFormatException.class, () -> {
             // less than min value
             // min allowed -2_147_483_648 (Integer.MIN_VALUE)
-            numberConversionService.convertNumberToWords("-2147483649");
+            numberConversionService.convertIntegerToWords("-2147483649");
         });
     }
 
@@ -59,7 +59,7 @@ public class NumberConversionServiceTest {
         assertThrows(NumberFormatException.class, () -> {
             // greater than max value
             // max allowed 2_147_483_647 (Integer.MAX_VALUE)
-            numberConversionService.convertNumberToWords("2147483648");
+            numberConversionService.convertIntegerToWords("2147483648");
         });
     }
 
@@ -67,7 +67,7 @@ public class NumberConversionServiceTest {
     public void tesConvertNumberToWords_NotANumber() {
         assertThrows(NumberFormatException.class, () -> {
             // not a number
-            numberConversionService.convertNumberToWords("       ");
+            numberConversionService.convertIntegerToWords("       ");
         });
     }
 
@@ -75,7 +75,7 @@ public class NumberConversionServiceTest {
     public void tesConvertNumberToWords_NotAnInteger() {
         assertThrows(NumberFormatException.class, () -> {
             // not a integer
-            numberConversionService.convertNumberToWords("90.87");
+            numberConversionService.convertIntegerToWords("90.87");
         });
     }
 
@@ -83,7 +83,7 @@ public class NumberConversionServiceTest {
     public void tesConvertNumberToWords_NotAnInteger_WithComma() {
         assertThrows(NumberFormatException.class, () -> {
             // not a integer
-            numberConversionService.convertNumberToWords("90,87");
+            numberConversionService.convertIntegerToWords("90,87");
         });
     }
 
@@ -91,7 +91,7 @@ public class NumberConversionServiceTest {
     public void tesConvertNumberToWords_NotValidNegativeNumber() {
         assertThrows(NumberFormatException.class, () -> {
             // not a valid negative number
-            numberConversionService.convertNumberToWords("- 90");
+            numberConversionService.convertIntegerToWords("- 90");
         });
     }
 
@@ -99,14 +99,14 @@ public class NumberConversionServiceTest {
     public void tesConvertNumberToWords_NullValue() {
         assertThrows(NumberFormatException.class, () -> {
             // not a valid negative number
-            numberConversionService.convertNumberToWords(null);
+            numberConversionService.convertIntegerToWords(null);
         });
     }
 
     @ParameterizedTest
     @MethodSource("provideConvertNumberToWords_Strings")
     void tesConvertNumberToWords_String(String number, String words) {
-        assertEquals(words, numberConversionService.convertNumberToWords(number));
+        assertEquals(words, numberConversionService.convertIntegerToWords(number));
     }
 
     private static Stream<Arguments> provideConvertNumberToWords_Strings() {
