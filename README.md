@@ -15,6 +15,7 @@ This system has three components:
 ## Run the program
 Before you begin make sure you have a Java 11 as your first java executable in 
 your PATH environment variable.
+You will need as well these ports available: 28080, 28081, 28082
 
 After you clone the repository. Go to each of the folders and run: `./mvnw spring-boot:run`
 
@@ -28,6 +29,7 @@ This will start on port 28081
 To run converter-ui
 ```
 cd converter-ui
+./npm install
 ./mvnw spring-boot:run
 ```
 This will start on port 28082
@@ -41,3 +43,18 @@ This will start on port 28080
 
 Now go to http://localhost:28080/ui enter an integer you'll see the words in English
 
+## Test coverage
+In this exercise is included unit and integration test. If you want to see 
+the results, go to:
+
+For Unit testing
+```
+cd converter-api
+./mvnw test
+```
+
+For unit and integration testing
+```
+cd converter-api
+./mvnw verify
+```
