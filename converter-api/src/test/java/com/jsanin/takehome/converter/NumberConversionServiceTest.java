@@ -1,6 +1,6 @@
 package com.jsanin.takehome.converter;
 
-import com.jsanin.takehome.converter.impl.ConvertNumbersServiceImpl;
+import com.jsanin.takehome.converter.impl.NumberConversionServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ConvertNumbersServiceTest {
+public class NumberConversionServiceTest {
 
-    private ConvertNumbersService convertNumbersService = new ConvertNumbersServiceImpl();
+    private NumberConversionService numberConversionService = new NumberConversionServiceImpl();
 
     @ParameterizedTest
     @MethodSource("provideConvertNumberToWords")
     void tesConvertNumberToWords_Integer(int number, String words) {
-        assertEquals(words, convertNumbersService.convertNumberToWords(number));
+        assertEquals(words, numberConversionService.convertNumberToWords(number));
     }
 
     private static Stream<Arguments> provideConvertNumberToWords() {
@@ -47,7 +47,7 @@ public class ConvertNumbersServiceTest {
         assertThrows(NumberFormatException.class, () -> {
             // less than min value
             // min allowed -2_147_483_648 (Integer.MIN_VALUE)
-            convertNumbersService.convertNumberToWords("-2147483649");
+            numberConversionService.convertNumberToWords("-2147483649");
         });
     }
 
@@ -56,7 +56,7 @@ public class ConvertNumbersServiceTest {
         assertThrows(NumberFormatException.class, () -> {
             // greater than max value
             // max allowed 2_147_483_647 (Integer.MAX_VALUE)
-            convertNumbersService.convertNumberToWords("2147483648");
+            numberConversionService.convertNumberToWords("2147483648");
         });
     }
 
@@ -64,7 +64,7 @@ public class ConvertNumbersServiceTest {
     public void tesConvertNumberToWords_NotANumber() {
         assertThrows(NumberFormatException.class, () -> {
             // not a number
-            convertNumbersService.convertNumberToWords("       ");
+            numberConversionService.convertNumberToWords("       ");
         });
     }
 
@@ -72,7 +72,7 @@ public class ConvertNumbersServiceTest {
     public void tesConvertNumberToWords_NotAnInteger() {
         assertThrows(NumberFormatException.class, () -> {
             // not a integer
-            convertNumbersService.convertNumberToWords("90.87");
+            numberConversionService.convertNumberToWords("90.87");
         });
     }
 
@@ -80,7 +80,7 @@ public class ConvertNumbersServiceTest {
     public void tesConvertNumberToWords_NotAnInteger_WithComma() {
         assertThrows(NumberFormatException.class, () -> {
             // not a integer
-            convertNumbersService.convertNumberToWords("90,87");
+            numberConversionService.convertNumberToWords("90,87");
         });
     }
 
@@ -88,7 +88,7 @@ public class ConvertNumbersServiceTest {
     public void tesConvertNumberToWords_NotValidNegativeNumber() {
         assertThrows(NumberFormatException.class, () -> {
             // not a valid negative number
-            convertNumbersService.convertNumberToWords("- 90");
+            numberConversionService.convertNumberToWords("- 90");
         });
     }
 
@@ -96,14 +96,14 @@ public class ConvertNumbersServiceTest {
     public void tesConvertNumberToWords_NullValue() {
         assertThrows(NumberFormatException.class, () -> {
             // not a valid negative number
-            convertNumbersService.convertNumberToWords(null);
+            numberConversionService.convertNumberToWords(null);
         });
     }
 
     @ParameterizedTest
     @MethodSource("provideConvertNumberToWords_Strings")
     void tesConvertNumberToWords_String(String number, String words) {
-        assertEquals(words, convertNumbersService.convertNumberToWords(number));
+        assertEquals(words, numberConversionService.convertNumberToWords(number));
     }
 
     private static Stream<Arguments> provideConvertNumberToWords_Strings() {

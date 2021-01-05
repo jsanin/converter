@@ -1,6 +1,6 @@
 package com.jsanin.takehome.converter.impl;
 
-import com.jsanin.takehome.converter.ConvertNumbersService;
+import com.jsanin.takehome.converter.NumberConversionService;
 import com.jsanin.takehome.converter.NumberConverterApi;
 import com.jsanin.takehome.converter.NumberToWordsResponse;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,9 @@ public class NumberConverterApiImpl implements NumberConverterApi {
 
     private static final String UNEXPECTED_ERROR = "Unexpected error";
 
-    private ConvertNumbersService convertNumbersService;
+    private NumberConversionService convertNumbersService;
 
-    public NumberConverterApiImpl(ConvertNumbersService convertNumbersService) {
+    public NumberConverterApiImpl(NumberConversionService convertNumbersService) {
         this.convertNumbersService = convertNumbersService;
     }
 

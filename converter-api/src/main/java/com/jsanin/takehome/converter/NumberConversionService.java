@@ -1,6 +1,6 @@
 package com.jsanin.takehome.converter;
 
-public interface ConvertNumbersService {
+public interface NumberConversionService {
 
     /**
      * Convert the given number to its equivalent in words

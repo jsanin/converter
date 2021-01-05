@@ -1,6 +1,6 @@
 package com.jsanin.takehome.converter.impl;
 
-import com.jsanin.takehome.converter.ConvertNumbersService;
+import com.jsanin.takehome.converter.NumberConversionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ConvertNumbersServiceImpl implements ConvertNumbersService {
+public class NumberConversionServiceImpl implements NumberConversionService {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConvertNumbersServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(NumberConversionServiceImpl.class);
 
     private static final String ZERO = "Zero";
     private static final String MINUS = "Minus";
