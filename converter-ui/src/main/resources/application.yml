@@ -1,2 +1,4 @@
 server:
   port: 28082
+  servlet:
+    context-path: /ui
