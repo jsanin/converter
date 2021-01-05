@@ -1,2 +1,15 @@
 server:
   port: 28080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: backend_route
+          uri: http://localhost:28081/converter
+          predicates:
+            - Path=/converter/**
+        - id: ui_route
+          uri: http://localhost:28082/ui
+          predicates:
+            - Path=/ui/**

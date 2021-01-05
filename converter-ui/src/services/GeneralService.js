@@ -10,7 +10,7 @@ const apiClient = axios.create({
 })
 
 const myServerClient = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://localhost:28080/converter',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -27,10 +27,10 @@ export default {
         return myServerClient.get("/token")
     },
 
-    getHelloWorld() {
+    convertNumberToWords(numberToConvert) {
         // const dataToken = await this.getToken();
         // return apiClient.get('/resource', {headers: {"x-auth-token": dataToken.data.token}})
-        return myServerClient.get("/resource")
+        return myServerClient.get('/rest/api/v1/numberToWords/' + numberToConvert)
     }
 
 }

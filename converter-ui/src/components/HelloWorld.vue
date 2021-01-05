@@ -64,11 +64,11 @@ export default {
       // }
 
       //this.$emit('property-selected', this.property)
-      GeneralService.getHelloWorld()
+      GeneralService.convertNumberToWords(this.numberToConvert)
               .then(response => {
                 console.log("From server: " + response.data)
                 this.fromServer = response.data.content + " " + response.data.id;
-                this.numberInWords = 'Success!!';
+                this.numberInWords = 'Success!! coverted '+ this.numberToConvert;
               })
               .catch(error => {
                 console.log(error);
