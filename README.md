@@ -43,6 +43,11 @@ This will start on port 28080
 
 Now go to http://localhost:28080/ui enter an integer you'll see the words in English
 
+## API Documentation
+
+First run the converter-api application as explained above and then go to 
+http://localhost:28081/converter/swagger-ui.html
+
 ## Test coverage
 In this exercise is included unit and integration test. If you want to see 
 the results, go to:
