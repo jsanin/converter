@@ -66,9 +66,9 @@ export default {
       //this.$emit('property-selected', this.property)
       GeneralService.convertNumberToWords(this.numberToConvert)
               .then(response => {
-                console.log("From server: " + response.data)
+                console.log("From server: " + response.data.words)
                 this.fromServer = response.data.content + " " + response.data.id;
-                this.numberInWords = 'Success!! coverted '+ this.numberToConvert;
+                this.numberInWords = 'Success!! coverted '+ this.numberToConvert + ' ' + response.data.words;
               })
               .catch(error => {
                 console.log(error);

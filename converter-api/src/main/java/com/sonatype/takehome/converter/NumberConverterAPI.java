@@ -1,9 +1,7 @@
-package com.sonatype.takehome.converter.api;
+package com.sonatype.takehome.converter;
 
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -32,6 +30,6 @@ public interface NumberConverterAPI {
     })
     ResponseEntity<NumberToWordsResponse> transformNumberToWords(
             @ApiParam(value = "Number to transform.", example = "5237", required = true)
-            @PathVariable("number") long number);
+            @PathVariable("number") String strNumber);
 
 }
