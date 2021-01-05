@@ -1,0 +1,13 @@
+@startuml
+!include includePuml/C4_Context.puml
+
+' LAYOUT_WITH_LEGEND()
+'LAYOUT_AS_SKETCH()
+
+title Number conversion Context Diagram
+
+Person(user, "Regular user", "A user that wants to transforms numbers")
+System(converter_system, "Converter system", "Allows users to convert numbers into words")
+
+Rel(user, converter_system, "Uses")
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+!include includePuml/C4_Container.puml
+
+top to bottom direction
+'LAYOUT_TOP_DOWN
+'LAYOUT_AS_SKETCH
+'LAYOUT_WITH_LEGEND
+
+title Number conversion Container diagram
+
+Person(user, "Regular user", "A user that wants to transforms numbers")
+
+System_Boundary(converter, "Number conversion") {
+    Container(gateway, "API Gateway", "Spring boot, spring cloud gateway, java 11", "API Gateway for this system")
+    Container(converterApi, "Converter API (backend)", "Spring boot, spring web, java 11", "This has the logic to convert numbers")
+    Container(converterUi, "Converter UI (front-end)", "VueJS 2, Javascript, Spring boot, spring web", "VueJS front-end to convert numbers ")
+}
+
+Rel(user, gateway, "REST", "https")
+
+Rel(gateway, converterApi, "forward request", "https")
+Rel(gateway, converterUi, "forward request", "https")
+
+@enduml
