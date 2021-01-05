@@ -11,9 +11,7 @@ const apiClient = axios.create({
 
 export default {
     convertNumberToWords(numberToConvert) {
-        // const dataToken = await this.getToken();
-        // return apiClient.get('/resource', {headers: {"x-auth-token": dataToken.data.token}})
-        return apiClient.get('/rest/api/v1/numberToWords/' + numberToConvert)
+        return apiClient.get('/rest/api/v1/numberToWords/' + numberToConvert.trim())
     }
 
 }

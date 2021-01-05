@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ConvertNumbersToWords />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ConvertNumbersToWords from './components/ConvertNumbersToWords.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ConvertNumbersToWords
   }
 }
 </script>
