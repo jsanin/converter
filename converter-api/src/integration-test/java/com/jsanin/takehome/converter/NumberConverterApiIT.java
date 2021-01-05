@@ -1,8 +1,5 @@
 package com.jsanin.takehome.converter;
 
-import com.jsanin.takehome.converter.ConverterSpringBootTest;
-import com.jsanin.takehome.converter.ConverterUrlMapping;
-import com.jsanin.takehome.converter.NumberToWordsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -21,7 +18,7 @@ public class NumberConverterApiIT {
     @Test
     public void testTransformNumberToWords_PositiveNumber_Success() {
         final int number = 123;
-        final String expectedResult = "One hundred twenty three";
+        final String expectedResult = "One hundred and twenty three";
         ResponseEntity<NumberToWordsResponse> response =
                 testRestTemplate.getForEntity(ConverterUrlMapping
                         .CONVERTER_BASE_PATH + "/numberToWords/{number}", NumberToWordsResponse.class, number);
@@ -34,7 +31,7 @@ public class NumberConverterApiIT {
     @Test
     public void testTransformNumberToWords_NegativeNumber_Success() {
         final int number = -123;
-        final String expectedResult = "Minus one hundred twenty three";
+        final String expectedResult = "Minus one hundred and twenty three";
         ResponseEntity<NumberToWordsResponse> response =
                 testRestTemplate.getForEntity(ConverterUrlMapping
                         .CONVERTER_BASE_PATH + "/numberToWords/{number}", NumberToWordsResponse.class, number);
@@ -48,7 +45,7 @@ public class NumberConverterApiIT {
     public void testTransformNumberToWords_PositiveLargeNumber_Success() {
         final int number = Integer.MAX_VALUE;
         final String expectedResult = "Two billion one hundred forty seven million four " +
-                "hundred eighty three thousand six hundred forty seven"; // 2_147_483_647
+                "hundred eighty three thousand six hundred and forty seven"; // 2_147_483_647
         ResponseEntity<NumberToWordsResponse> response =
                 testRestTemplate.getForEntity(ConverterUrlMapping
                         .CONVERTER_BASE_PATH + "/numberToWords/{number}", NumberToWordsResponse.class, number);

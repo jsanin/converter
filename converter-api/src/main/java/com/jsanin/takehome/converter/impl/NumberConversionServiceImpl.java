@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Service
 public class NumberConversionServiceImpl implements NumberConversionService {
@@ -17,10 +18,14 @@ public class NumberConversionServiceImpl implements NumberConversionService {
 
     private static final String ZERO = "Zero";
     private static final String MINUS = "Minus";
+    private static final String AND = "and ";
     private static final List<Integer> divisors;
     private static final List<String> numbersWords;
     private static final Map<Integer, String> tensWords;
     private static final Map<Integer, String> onesWords;
+
+    private static final Pattern REGEX_FIND_AND_WORD = Pattern.compile("\\b" + AND + "\\b");
+
 
     static {
         divisors = new LinkedList<>();
@@ -68,20 +73,22 @@ public class NumberConversionServiceImpl implements NumberConversionService {
         onesWords.put(19, "nineteen");
     }
 
-    private StringBuilder getOnesAndTensNumber(int between1and99) {
+    private StringBuilder getOnesAndTensNumber(int between1and99, String prefix) {
         StringBuilder sb = new StringBuilder();
         if(0 < between1and99 && between1and99 < 20) {
+            sb.append(prefix);
             sb.append(onesWords.get(between1and99));
         } else if(100 > between1and99 && between1and99 > 19) {
+            sb.append(prefix);
             sb.append(tensWords.get(between1and99 / 10)).append(" ");
             sb.append(onesWords.get(between1and99 % 10));
         }
         return sb;
     }
 
-    private StringBuilder convertNumber(long number) {
+    private StringBuilder convertNumber(long number, boolean firstTime) {
         if(number < 100) {
-            return getOnesAndTensNumber(Long.valueOf(number).intValue());
+            return getOnesAndTensNumber(Long.valueOf(number).intValue(), firstTime?"":AND);
         }
         StringBuilder sb = new StringBuilder();
         int i = 0;
@@ -92,9 +99,10 @@ public class NumberConversionServiceImpl implements NumberConversionService {
                 i++;
                 continue;
             }
-            sb.append(convertNumber(result)).append(" ");
+            sb.append(convertNumber(result, false)).append(" ");
             sb.append(numbersWords.get(i)).append(" ");
-            sb.append(convertNumber(number % divisor));
+            sb = new StringBuilder().append(REGEX_FIND_AND_WORD.matcher(sb.toString()).replaceAll(""));
+            sb.append(convertNumber(number % divisor, false));
             break;
         }
         return sb;
@@ -111,7 +119,7 @@ public class NumberConversionServiceImpl implements NumberConversionService {
             toConvert = number * -1L;
             converted.append(MINUS).append(" ");
         }
-        converted.append(convertNumber(toConvert));
+        converted.append(convertNumber(toConvert, true));
         return converted.substring(0,1).toUpperCase() + converted.substring(1).toLowerCase().stripTrailing();
     }
 
