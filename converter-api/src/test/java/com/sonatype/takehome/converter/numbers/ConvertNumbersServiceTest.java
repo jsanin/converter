@@ -34,6 +34,7 @@ class ConvertNumbersServiceTest {
             Arguments.of(85, "Eighty five"),
             Arguments.of(5237, "Five thousand two hundred and thirty seven"),
             Arguments.of(-5237, "Minus five thousand two hundred and thirty seven"),
+            Arguments.of(2_000_000_001, "Two billion one"),
             Arguments.of(Integer.MAX_VALUE, "Two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven"), // 2_147_483_647
             Arguments.of(Integer.MIN_VALUE, "Minus two billion one hundred forty seven million four hundred eighty three thousand six hundred forty eight") // -2_147_483_648
             //Arguments.of(3450600004000, "three thousand four hundred fifty  billion six hundred  million four thousand")

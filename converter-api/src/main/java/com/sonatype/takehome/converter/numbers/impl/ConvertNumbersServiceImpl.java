@@ -17,17 +17,17 @@ public class ConvertNumbersServiceImpl implements ConvertNumbersService {
 
     private static final String ZERO = "Zero";
     private static final String MINUS = "Minus";
-    private List<Integer> numbers;
-    private List<String> numbersWords;
-    private Map<Integer, String> tensWords;
-    private Map<Integer, String> onesWords;
+    private static final List<Integer> divisors;
+    private static final List<String> numbersWords;
+    private static final Map<Integer, String> tensWords;
+    private static final Map<Integer, String> onesWords;
 
-    public ConvertNumbersServiceImpl() {
-        numbers = new LinkedList<>();
-        numbers.add(1_000_000_000);
-        numbers.add(1_000_000);
-        numbers.add(1_000);
-        numbers.add(100);
+    static {
+        divisors = new LinkedList<>();
+        divisors.add(1_000_000_000);
+        divisors.add(1_000_000);
+        divisors.add(1_000);
+        divisors.add(100);
 
         numbersWords = new LinkedList<>();
         numbersWords.add("billion");
@@ -66,7 +66,6 @@ public class ConvertNumbersServiceImpl implements ConvertNumbersService {
         onesWords.put(17, "seventeen");
         onesWords.put(18, "eighteen");
         onesWords.put(19, "nineteen");
-
     }
 
     private StringBuilder getOnesAndTensNumber(int between1and99) {
@@ -86,26 +85,19 @@ public class ConvertNumbersServiceImpl implements ConvertNumbersService {
         }
         StringBuilder sb = new StringBuilder();
         int i = 0;
-        for (Integer divisor : numbers) {
+        for (Integer divisor : divisors) {
             long result = number / divisor;
             if(result <= 0) {
                 // try next
                 i++;
                 continue;
             }
-            if(result > 99) {
-                sb.append(convertNumber(result)).append(" ");
-            } else {
-                sb.append(getOnesAndTensNumber(Long.valueOf(result).intValue())).append(" ");
-            }
+            sb.append(convertNumber(result)).append(" ");
             sb.append(numbersWords.get(i)).append(" ");
             sb.append(convertNumber(number % divisor));
             break;
-
         }
         return sb;
-
-
     }
 
     @Override
