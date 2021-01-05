@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Convert numbers to words</h1>
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent>
       <label>Enter an integer: </label>
       <input
               v-model="numberToConvert"

@@ -8,7 +8,7 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sonatype.takehome</groupId>
+	<groupId>com.jsanin.takehome</groupId>
 	<artifactId>converter-ui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>converter-ui</name>
@@ -55,15 +55,15 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 					</execution>
-<!--					<execution>-->
-<!--						<id>npm-build</id>-->
-<!--						<goals>-->
-<!--							<goal>npm</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<arguments>run-script build</arguments>-->
-<!--						</configuration>-->
-<!--					</execution>-->
+					<execution>
+						<id>npm-build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run-script build</arguments>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
