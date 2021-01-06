@@ -17,7 +17,13 @@ Before you begin make sure you have a Java 11 as your first java executable in
 your PATH environment variable.
 You will need as well these ports available: 28080, 28081, 28082
 
-After you clone the repository. Go to each of the folders and run: `./mvnw spring-boot:run`
+Clone the repository:
+```
+git clone https://github.com/jsanin/converter.git
+cd converter
+```
+
+Go to each of the folders and run: `./mvnw spring-boot:run`
 
 To run converter-api
 ```
