@@ -7,6 +7,10 @@ server:
     key-alias: converterall
 
 spring:
+  application:
+    name: converter-gateway
+  profiles:
+    active: local
   cloud:
     gateway:
       routes:
@@ -18,3 +22,7 @@ spring:
           uri: http://localhost:28082/ui
           predicates:
             - Path=/ui/**
+
+logging:
+  file:
+    path: ${HOME}/dev/converter/logs

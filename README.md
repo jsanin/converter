@@ -7,7 +7,7 @@ With this system a user can convert integer numbers to english words
 This system has three components:
 - Converter API (backend). This exposes the operations needed to convert numbers to english words
 - Converter UI (frontend). This has the view components to interact with the backend to show the result to the end user 
-- API Gateway. Works a single entry-point for this system
+- API Gateway. Works a single entry-point for this system.
 
 
 ![Container diagram](c4model/containers.png "Container diagram")
@@ -41,7 +41,8 @@ cd converter-gateway
 ```
 This will start on port 28080
 
-Now go to http://localhost:28080/ui enter an integer you'll see the words in English
+Now go to https://localhost:28080/ui enter an integer you'll see the words in English.
+You will need to accept the warning the browser show you due to the selft signed certificate.
 
 ## API Documentation
 
@@ -63,3 +64,8 @@ For unit and integration testing
 cd converter-api
 ./mvnw verify
 ```
+
+## Application logs
+
+Applications' logs by default are in `${HOME}/dev/converter/logs` you can
+modify this changing the application property `logging.file.path`

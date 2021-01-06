@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty name="spring.application.name" source="spring.application.name" />
+	<springProperty scope="context" name="logsPath" source="logging.file.path" defaultValue="Logs dir not specified"/>
+
+    <!-- Appender -->
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logsPath}/${spring.application.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${logsPath}/${spring.application.name}-%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <!-- keep 30 days' worth of history capped at 3GB total size -->
+            <!-- <maxHistory>30</maxHistory> -->
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-7.7thread] %-5level [%logger{16}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%green(%-7.7thread)] %highlight(%-5level) [%yellow(%logger{16})] - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <springProfile name="prod">
+        <root level="warn">
+            <appender-ref ref="LOGFILE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="LOGFILE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="local">
+        <!--    <logger name="org.springframework" level="DEBUG"/>-->
+        <logger name="com.jsanin.takehome.converter" level="DEBUG"/>
+        <root level="info">
+            <appender-ref ref="LOGFILE" />
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+</configuration>

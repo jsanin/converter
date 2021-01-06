@@ -2,3 +2,13 @@ server:
   port: 28081
   servlet:
     context-path: /converter
+
+spring:
+  application:
+    name: converter-api
+  profiles:
+    active: local
+
+logging:
+  file:
+    path: ${HOME}/dev/converter/logs
