@@ -6,7 +6,7 @@ With this system a user can convert integer numbers to english words
 
 This system has three components:
 - Converter API (backend). This exposes the operations needed to convert numbers to english words.
-  Technologies and frameworks: Spring Boot, Spring Web, Java 11
+  Technologies and frameworks: Spring Boot, Spring Web, Java 11, Swagger 2
 - Converter UI (frontend). This has the view components to interact with the backend to show the result to the end user.
   Technologies and frameworks: Javascript - VueJS v2, HTML, CSS, Spring Boot, Spring Web, Java 11
 - API Gateway. Works a single entry-point for this system.
