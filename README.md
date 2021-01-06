@@ -5,9 +5,12 @@ With this system a user can convert integer numbers to english words
 ![Context diagram](c4model/context.png "Context diagram")
 
 This system has three components:
-- Converter API (backend). This exposes the operations needed to convert numbers to english words
-- Converter UI (frontend). This has the view components to interact with the backend to show the result to the end user 
+- Converter API (backend). This exposes the operations needed to convert numbers to english words.
+  Technologies and frameworks: Spring Boot, Spring Web, Java 11
+- Converter UI (frontend). This has the view components to interact with the backend to show the result to the end user.
+  Technologies and frameworks: Javascript - VueJS v2, HTML, CSS, Spring Boot, Spring Web, Java 11
 - API Gateway. Works a single entry-point for this system.
+  Technologies and frameworks: Javascript - Spring Boot, Spring Cloud Gateway, Java 11
 
 
 ![Container diagram](c4model/containers.png "Container diagram")
