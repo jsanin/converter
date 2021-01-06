@@ -1,5 +1,10 @@
 server:
   port: 28080
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore/converter-ms.p12
+    key-store-password: 1QXy9zu9sQLVWOr
+    key-alias: converterall
 
 spring:
   cloud:

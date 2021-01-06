@@ -1,0 +1,25 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[req_distinguished_name]
+countryName = CO
+countryName_default = CO
+stateOrProvinceName = ANTIOQUIA
+stateOrProvinceName_default = AN
+localityName = Medellin
+localityName_default = Medellin
+organizationalUnitName    = jsanin
+organizationalUnitName_default    = jsanin
+commonName = www.jsanin.com
+commonName_max    = 64
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+IP.1 = 127.0.0.1
